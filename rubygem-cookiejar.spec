@@ -1,13 +1,14 @@
 %global gem_name cookiejar
 
 Name: rubygem-%{gem_name}
-Version: 0.3.2
-Release: 9%{?dist}
+Version: 0.3.3
+Release: 1%{?dist}
 Summary: Parsing and returning cookies in Ruby
 Group: Development/Languages
 License: BSD
 URL: https://github.com/dwaite/cookiejar
 Source0: https://rubygems.org/gems/cookiejar-%{version}.gem
+BuildRequires: rubygem(rspec)
 BuildRequires: rubygem(rspec-core)
 BuildRequires: rubygem(rspec-mocks)
 BuildRequires: rubygem(rspec-expectations)
@@ -66,6 +67,11 @@ cp -pa .%{gem_dir}/* \
 %{gem_libdir}
 %exclude %{gem_cache}
 %exclude %{gem_instdir}/contributors.json
+%exclude %{gem_instdir}/.gitignore
+%exclude %{gem_instdir}/.rspec
+%exclude %{gem_instdir}/.travis.yml
+%exclude %{gem_instdir}/Gemfile
+%exclude %{gem_instdir}/cookiejar.gemspec
 %{gem_spec}
 %doc %{gem_instdir}/spec/*
 %doc %{gem_instdir}/LICENSE
@@ -76,7 +82,8 @@ cp -pa .%{gem_dir}/* \
 %{gem_instdir}/Rakefile
 
 %changelog
-* Mon Jan 30 2017 Martin Mágr <mmagr@redhat.com> - 0.3.2-9
+* Mon Jan 30 2017 Martin Mágr <mmagr@redhat.com> - 0.3.3-1
+- Updated to latest upstream
 - Add missing rspec dependency for unit tests
 
 * Mon Feb 08 2016 Greg Hellings <greg.hellings@gmail.com> - 0.3.2-8
